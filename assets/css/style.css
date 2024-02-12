@@ -2,23 +2,101 @@
 
 * {
   font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth;  
+}
+
+body {
+  overflow: hidden;
+  background: #000;
+  height: 100vh;
+}
+
+.content:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.content {
+  opacity: 0;
+  /* height: 100%; */
+  /* width: 100%; */
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+  height: auto;
+}
+html::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #fff;
 }
 
 .blurple {
-  color: #7289da;
+  color: #000;
 }
 
 .bg-base {
-  background-color: #1a2634 !important;
+  background-color: black !important;
+}
+
+.load {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+}
+.load .blinder-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+.load .blinder-container .blinder {
+  background: #fff;
+  height: 100vh;
+  flex: 1;
+  transform-origin: top;
+}
+.drip-load {
+  animation: animateDrips 1s infinite;
+}
+
+@keyframes animateDrips {
+  to {
+    transform: translateY(-100px);
+  }
+}
+
+.circle {
+  --circle-size: 40px;
+  position: fixed;
+  height: var(--circle-size);
+  width: var(--circle-size);
+  border: 1px solid white;
+  border-radius: 100%;
+  top: calc(var(--circle-size) / 2 * -1);
+  left: calc(var(--circle-size) / 2 * -1);
+  pointer-events: none;
+  background: #fff;
+  z-index: 99999;
+  mix-blend-mode: difference;
 }
 
 #backtotop {
   display: inline-block;
-  background-color: #7289da;
+  background-color: #363636;
   width: 50px;
   height: 50px;
   text-align: center;
@@ -56,12 +134,12 @@ html {
 
 .navbar-item:hover {
   background-color: transparent !important;
-  color: #7289da !important;
+  color: #b3b3b3 !important;
 }
 
 .navbar-link:hover {
   background-color: transparent !important;
-  color: #7289da !important;
+  color: #b3b3b3 !important;
 }
 
 .navbar-menu {
@@ -94,7 +172,8 @@ html {
 
 nav,
 .navbar-menu {
-  background-color: #1a2634 !important;
+  background-color: #000 !important;
+  /* overflow: auto; */
 }
 
 .navbar-item.nav-dark,
@@ -165,7 +244,7 @@ nav.nav-w {
 }
 
 .line.blurple {
-  background: #7289da;
+  background: #000;
 }
 
 .title.lined {
@@ -182,7 +261,7 @@ nav.nav-w {
   animation: mover 0.5s infinite alternate;
 }
 
-@-webkit-keyframes mover {
+@keyframes mover {
   0% {
     transform: translateY(0);
   }
@@ -217,8 +296,7 @@ nav.nav-w {
 }
 
 @media (max-width: 767px) {
-  .shape-right
- {
+  .shape-right {
     display: none;
   }
 }
@@ -235,6 +313,39 @@ nav.nav-w {
 
 .shape-left img {
   width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-burger {
+    display: block;
+  }
+
+  .navbar-menu.is-active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 10;
+  }
+
+  .navbar-item {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  /* <== You can change this break point as per your  needs */
+  .reverse-columns {
+    flex-direction: column-reverse;
+    display: flex;
+  }
 }
 
 @media (max-width: 767px) {
