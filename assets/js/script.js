@@ -22,7 +22,7 @@ tl
 tl.eventCallback("onComplete", function() {
   body.style.background = "#fff"
   body.style.height = "auto"
-  body.style.overflow = "visible"
+  // body.style.overflow = "visible"
   blinder.style.display = "none"
 });
 
